@@ -3,23 +3,104 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Hello Ionic</ion-title>
+    <ion-title>Lista de compra</ion-title>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
 
-  <h3>Welcome to your first Ionic app!</h3>
+  <h3>Bienvenido a tu lista de la compra</h3>
+  Puedes añadir elementos a través del campo de texto, y aparecerán debajo.
 
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
+  <br/><br/>
+  <ion-row>
+    <ion-col col-sm-10 col-xs-10 col-md-3>
+      <ion-item>
+        <ion-input
+          #new_item_description
+          type="text"
+          placeholder="Frutas"
+          (keyup.enter)="addNewItem(new_item_description.value, new_item_price.value, new_item_quantity.value); new_item_description.value=''; new_item_price.value=0;  new_item_quantity.value=1" ></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label stacked>Cantidad</ion-label>
+            <ion-input
+              #new_item_quantity
+              type="number"
+              value="1"
+              (keyup.enter)="addNewItem(new_item_description.value, new_item_price.value, new_item_quantity.value); new_item_description.value=''; new_item_price.value=0;  new_item_quantity.value=1" ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label stacked>Precio</ion-label>
+            <ion-input
+              #new_item_price
+              type="number"
+              value="0"
+              (keyup.enter)="addNewItem(new_item_description.value, new_item_price.value, new_item_quantity.value); new_item_description.value=''; new_item_price.value=0;  new_item_quantity.value=1" ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col col-2>
+      <button
+        ion-button
+        icon-only
+        (click)="addNewItem(new_item_description.value, new_item_price.value, new_item_quantity.value); new_item_description.value=''; new_item_price.value=0;  new_item_quantity.value=1">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+
+  <div>
+    <div>
+      <hr>
+      Pendiente:
+      <div *ngIf="items.pendingItems.length <= 0" class="light-message">
+        Aún no has añadido nada...
+      </div>
+      <shopping-list [items]="items.pendingItems"></shopping-list>
+
+      <!--<ion-row *ngFor="let item of items.pendingItems">-->
+        <!--<ion-col col-1>-->
+          <!--<ion-checkbox [(ngModel)]="item.done"></ion-checkbox>-->
+        <!--</ion-col>-->
+        <!--<ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }" (click)="viewDetail(item)">-->
+          <!--{{item.quantity}}x {{item.description}}-->
+        <!--</ion-col>-->
+        <!--<ion-col col-1 style="cursor: pointer" (click)="removeFromList(item)">-->
+          <!--<ion-icon name="trash"></ion-icon>-->
+        <!--</ion-col>-->
+      <!--</ion-row>-->
+      <div *ngIf="items.pendingItems.length > 0">
+        Total: {{ items.listTotal | currency:'EUR'}}
+      </div>
+    </div>
+
+
+    <div>
+      <span *ngIf="items.doneItems.length > 0">
+        <hr>
+        Comprados...<br/>
+      </span>
+      <shopping-list [items]="items.doneItems"></shopping-list>
+      <!--<ion-row *ngFor="let item of items.doneItems">-->
+        <!--<ion-col col-1>-->
+          <!--<ion-checkbox [(ngModel)]="item.done"></ion-checkbox>-->
+        <!--</ion-col>-->
+        <!--<ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }">-->
+          <!--{{item.description}}-->
+        <!--</ion-col>-->
+        <!--<ion-col col-1 style="cursor: pointer" (click)="removeFromList(item)">-->
+          <!--<ion-icon name="trash"></ion-icon>-->
+        <!--</ion-col>-->
+      <!--</ion-row>-->
+    </div>
+
+  </div>
 
 </ion-content>
