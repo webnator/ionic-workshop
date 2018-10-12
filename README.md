@@ -10,19 +10,19 @@ the [Ionic](https://ionicframework.com/) framework.
 
 This workshop was thought to be structured in X different "steps" or 
 modules, and this project is also structured the same way using branches:
-- **[step-1]()** This is the very basic structure that comes out of executing
+- **[step-1](https://github.com/webnator/ionic-workshop/tree/step-1)** This is the very basic structure that comes out of executing
 `ionic start MyIonicProject tutorial`
-- **[step-2]()** This step finished with creating a new page, structured
+- **[step-2](https://github.com/webnator/ionic-workshop/tree/step-2)** This step finished with creating a new page, structured
 with the grid system, and with template variables
-- **[step-3]()** The purpose of this step is to teach how the inputs in
+- **[step-3](https://github.com/webnator/ionic-workshop/tree/step-3)** The purpose of this step is to teach how the inputs in
 the page interact with the component code and the rest of the template.
 Also, how to create dynamic events from component data (ngIf, ngFor, etc)
-- **[step-4]()** In this step we add classes and data models to ensure
+- **[step-4](https://github.com/webnator/ionic-workshop/tree/step-4)** In this step we add classes and data models to ensure
 consistency of data. From there, we add more functionality such as 
 quantity and price
-- **[step-5]()** Here we add navigation, passing data to new pages,working 
+- **[step-5](https://github.com/webnator/ionic-workshop/tree/step-5)** Here we add navigation, passing data to new pages,working 
 with the navController and such
-- **[step-6]()** In this step we refactor our shopping list and create a 
+- **[step-6](https://github.com/webnator/ionic-workshop/tree/step-6)** In this step we refactor our shopping list and create a 
 reusable component 
 
 
