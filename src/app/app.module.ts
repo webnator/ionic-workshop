@@ -9,15 +9,13 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {ShoppingListComponent} from '../pages/hello-ionic/shopping-list/shopping-list.component';
 
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage,
-    ShoppingListComponent
+    ListPage
   ],
   imports: [
     BrowserModule,
@@ -28,8 +26,7 @@ import {ShoppingListComponent} from '../pages/hello-ionic/shopping-list/shopping
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage,
-    ShoppingListComponent
+    ListPage
   ],
   providers: [
     StatusBar,

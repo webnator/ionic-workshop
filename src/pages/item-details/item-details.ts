@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavParams } from 'ionic-angular';
-import { ListItem } from '../../app/ListItem';
+import { NavController, NavParams } from 'ionic-angular';
 
 
 @Component({
@@ -9,9 +8,10 @@ import { ListItem } from '../../app/ListItem';
   templateUrl: 'item-details.html'
 })
 export class ItemDetailsPage {
-  item: ListItem;
+  selectedItem: any;
 
-  constructor(public navParams: NavParams) {
-    this.item = navParams.get('item');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // If we navigated to this page, we will have an item available as a nav param
+    this.selectedItem = navParams.get('item');
   }
 }
