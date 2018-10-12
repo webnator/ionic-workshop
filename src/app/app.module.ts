@@ -3,20 +3,20 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
+import { HomePage } from '../pages/home/home';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
+import { ContactPage } from '../pages/contact/contact';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {ShoppingListComponent} from '../pages/hello-ionic/shopping-list/shopping-list.component';
+import {ShoppingListComponent} from '../pages/home/shopping-list/shopping-list.component';
 
 @NgModule({
   declarations: [
     MyApp,
-    HelloIonicPage,
+    HomePage,
     ItemDetailsPage,
-    ListPage,
+    ContactPage,
     ShoppingListComponent
   ],
   imports: [
@@ -26,9 +26,9 @@ import {ShoppingListComponent} from '../pages/hello-ionic/shopping-list/shopping
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HelloIonicPage,
+    HomePage,
     ItemDetailsPage,
-    ListPage,
+    ContactPage,
     ShoppingListComponent
   ],
   providers: [

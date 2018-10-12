@@ -3,10 +3,10 @@ import { ListItem } from '../../app/ListItem';
 import {List} from '../../app/List';
 
 @Component({
-  selector: 'page-hello-ionic',
-  templateUrl: 'hello-ionic.html'
+  selector: 'home',
+  templateUrl: 'home.html'
 })
-export class HelloIonicPage {
+export class HomePage {
   items: List = new List(
     this.newItemModel('Carne', 1.5),
     this.newItemModel('Pollo', 1),
