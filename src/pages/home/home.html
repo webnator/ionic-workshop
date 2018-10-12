@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Lista de compra</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Bienvenido a tu lista de la compra</h3>
+  Puedes añadir elementos a través del campo de texto, y aparecerán debajo.
+
+  <br/><br/>
+
+  <ion-row>
+    <ion-col col-sm-10 col-xs-10 col-md-3>
+      <ion-item>
+        <ion-input
+          #new_item
+          type="text"
+          placeholder="Frutas"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-2>
+      <button
+        ion-button
+        icon-only>
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  {{new_item.value}}
+
+</ion-content>
