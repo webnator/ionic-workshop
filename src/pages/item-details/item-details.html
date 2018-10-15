@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!item">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Item Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h3>
+    {{item.description}}
+  </h3>
+
+  <p>Comprado: {{ item.done ? 'Si' : 'No' }}</p>
+  <p>Precio: {{ item.price | currency:'EUR'}}</p>
+  <p>Cantidad: {{ item.quantity }}</p>
+  <hr>
+  <p>Gastado: {{ item.price * item.quantity | currency:'EUR' }}</p>
+
+</ion-content>

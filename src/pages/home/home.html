@@ -67,8 +67,8 @@
         <ion-col col-1>
           <ion-checkbox [(ngModel)]="item.done"></ion-checkbox>
         </ion-col>
-        <ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }">
-          {{item.description}}
+        <ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }" (click)="viewDetail(item)">
+          {{item.quantity}}x {{item.description}}
         </ion-col>
         <ion-col col-1 style="cursor: pointer" (click)="items.remove(item.id)">
           <ion-icon name="trash"></ion-icon>
@@ -88,8 +88,8 @@
         <ion-col col-1>
           <ion-checkbox [(ngModel)]="item.done"></ion-checkbox>
         </ion-col>
-        <ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }">
-          {{item.description}}
+        <ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }" (click)="viewDetail(item)">
+          {{item.quantity}}x {{item.description}}
         </ion-col>
         <ion-col col-1 style="cursor: pointer" (click)="items.remove(item.id)">
           <ion-icon name="trash"></ion-icon>
