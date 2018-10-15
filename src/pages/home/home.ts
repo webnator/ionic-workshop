@@ -1,36 +1,30 @@
 import { Component } from '@angular/core';
+import {List} from '../../app/List';
+import {ListItem} from '../../app/ListItem';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
-  items: Array<any> = [];
+  items: List = new List();
 
   constructor() {}
 
-  get pendingItems() {
-    return this.items.filter(item => !item.done)
-  }
-  get doneItems() {
-    return this.items.filter(item => item.done)
-  }
-
-  addNewItem(value: string): void {
-    if (value) {
-      this.items.push({
-        id: this.randomNumber(),
-        done: false,
-        description: value,
-      });
+  addNewItem(value: string, price: number, quantity: number): void {
+    if (value && price && quantity) {
+      this.items.add(this.newItemModel(value, price, quantity));
     }
   }
 
-  removeFromList(item: any): void {
-    if (item.done) {
-      this.items.splice(this.items.findIndex(it => it.id === item.id), 1);
-    } else {
-      alert('No puedes borrar un item no completado');
+  /** Private methods **/
+  private newItemModel(description: string, price: number = 0, quantity: number = 1): ListItem {
+    return {
+      id: this.randomNumber(),
+      done: false,
+      description,
+      price,
+      quantity
     }
   }
 

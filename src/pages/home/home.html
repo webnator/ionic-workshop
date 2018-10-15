@@ -17,17 +17,39 @@
     <ion-col col-sm-10 col-xs-10 col-md-3>
       <ion-item>
         <ion-input
-          #new_item
+          #new_item_description
           type="text"
           placeholder="Frutas"
-          (keyup.enter)="addNewItem(new_item.value); new_item.value='';"></ion-input>
+          (keyup.enter)="addNewItem(new_item_description.value, new_item_price.value, new_item_quantity.value); new_item_description.value=''; new_item_price.value=0;  new_item_quantity.value=1" ></ion-input>
       </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label stacked>Cantidad</ion-label>
+            <ion-input
+              #new_item_quantity
+              type="number"
+              value="1"
+              (keyup.enter)="addNewItem(new_item_description.value, new_item_price.value, new_item_quantity.value); new_item_description.value=''; new_item_price.value=0;  new_item_quantity.value=1" ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label stacked>Precio</ion-label>
+            <ion-input
+              #new_item_price
+              type="number"
+              value="0"
+              (keyup.enter)="addNewItem(new_item_description.value, new_item_price.value, new_item_quantity.value); new_item_description.value=''; new_item_price.value=0;  new_item_quantity.value=1" ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
     </ion-col>
     <ion-col col-2>
       <button
         ion-button
         icon-only
-        (click)="addNewItem(new_item.value); new_item.value='';">
+        (click)="addNewItem(new_item_description.value, new_item_price.value, new_item_quantity.value); new_item_description.value=''; new_item_price.value=0;  new_item_quantity.value=1">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-col>
@@ -37,36 +59,39 @@
     <div>
       <hr>
       Pendiente:
-      <div *ngIf="pendingItems.length <= 0" class="light-message">
+      <div *ngIf="items.pendingItems.length <= 0" class="light-message">
         Aún no has añadido nada...
       </div>
 
-      <ion-row *ngFor="let item of pendingItems">
+      <ion-row *ngFor="let item of items.pendingItems">
         <ion-col col-1>
           <ion-checkbox [(ngModel)]="item.done"></ion-checkbox>
         </ion-col>
         <ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }">
           {{item.description}}
         </ion-col>
-        <ion-col col-1 style="cursor: pointer" (click)="removeFromList(item)">
+        <ion-col col-1 style="cursor: pointer" (click)="items.remove(item.id)">
           <ion-icon name="trash"></ion-icon>
         </ion-col>
       </ion-row>
+      <div *ngIf="items.pendingItems.length > 0">
+        Total: {{ items.listTotal | currency:'EUR'}}
+      </div>
     </div>
 
     <div>
-      <span *ngIf="doneItems.length > 0">
+      <span *ngIf="items.doneItems.length > 0">
         <hr>
         Comprados...<br/>
       </span>
-      <ion-row *ngFor="let item of doneItems">
+      <ion-row *ngFor="let item of items.doneItems">
         <ion-col col-1>
           <ion-checkbox [(ngModel)]="item.done"></ion-checkbox>
         </ion-col>
         <ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }">
           {{item.description}}
         </ion-col>
-        <ion-col col-1 style="cursor: pointer" (click)="removeFromList(item)">
+        <ion-col col-1 style="cursor: pointer" (click)="items.remove(item.id)">
           <ion-icon name="trash"></ion-icon>
         </ion-col>
       </ion-row>
