@@ -7,7 +7,6 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
   <h3>Bienvenido a tu lista de la compra</h3>
   Puedes añadir elementos a través del campo de texto, y aparecerán debajo.
@@ -20,17 +19,59 @@
         <ion-input
           #new_item
           type="text"
-          placeholder="Frutas"></ion-input>
+          placeholder="Frutas"
+          (keyup.enter)="addNewItem(new_item.value); new_item.value='';"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-2>
       <button
         ion-button
-        icon-only>
+        icon-only
+        (click)="addNewItem(new_item.value); new_item.value='';">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-col>
   </ion-row>
-  {{new_item.value}}
+
+  <div>
+    <div>
+      <hr>
+      Pendiente:
+      <div *ngIf="pendingItems.length <= 0" class="light-message">
+        Aún no has añadido nada...
+      </div>
+
+      <ion-row *ngFor="let item of pendingItems">
+        <ion-col col-1>
+          <ion-checkbox [(ngModel)]="item.done"></ion-checkbox>
+        </ion-col>
+        <ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }">
+          {{item.description}}
+        </ion-col>
+        <ion-col col-1 style="cursor: pointer" (click)="removeFromList(item)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div>
+      <span *ngIf="doneItems.length > 0">
+        <hr>
+        Comprados...<br/>
+      </span>
+      <ion-row *ngFor="let item of doneItems">
+        <ion-col col-1>
+          <ion-checkbox [(ngModel)]="item.done"></ion-checkbox>
+        </ion-col>
+        <ion-col [ngStyle]="{'text-decoration': item.done ? 'line-through' : '' }">
+          {{item.description}}
+        </ion-col>
+        <ion-col col-1 style="cursor: pointer" (click)="removeFromList(item)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>
 
 </ion-content>
